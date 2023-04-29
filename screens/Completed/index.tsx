@@ -27,12 +27,21 @@ const Completed = ({ navigation }: Props) => {
   return (
     <Screen style={[styles.screen, { backgroundColor }]}>
       <Icon size={50} name="checkcircle" color={primaryColor} style={styles.checkMark} />
-      <Text style={styles.title}> Congratulations!</Text>
+      <Text style={styles.title} testID="completed-meditation">
+        {' '}
+        Congratulations!
+      </Text>
       <Text style={styles.description}>
         You have completed {totalSessions} meditation{totalSessions === 1 ? '' : 's'}!{'\n'}Do you
         want to give a donation?
       </Text>
-      <Button onPress={onPressDonate} style={styles.button} mode="contained" color={primaryColor}>
+      <Button
+        onPress={onPressDonate}
+        style={styles.button}
+        mode="contained"
+        color={primaryColor}
+        testID="donate"
+      >
         Donate
       </Button>
       <Button
@@ -40,6 +49,7 @@ const Completed = ({ navigation }: Props) => {
         style={[styles.button, styles.skipButton]}
         mode="outlined"
         color={Colors.light.white}
+        testID="skip"
       >
         Skip
       </Button>
