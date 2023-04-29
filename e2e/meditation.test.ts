@@ -1,6 +1,7 @@
-import { device, element, by, expect } from 'detox'
+import { device, expect } from 'detox'
 import { meditationScreen } from './screens/meditation'
 import { statsScreen } from './screens/stats'
+import { completedScreen } from './screens/completed'
 
 describe('Meditation test cases', () => {
   beforeAll(async () => {
@@ -18,9 +19,9 @@ describe('Meditation test cases', () => {
     await meditationScreen().playMeditation()
     await meditationScreen().finishMeditation()
 
-    await element(by.id('skip')).tap()
-    await element(by.label('Stats')).tap()
+    await completedScreen().elements.skip.tap()
 
+    await meditationScreen().elements.stats().tap()
     await expect(statsScreen().elements.currentStreak()).toHaveText('1 day')
     await expect(statsScreen().elements.totalSessions()).toHaveText('1 session')
   })
