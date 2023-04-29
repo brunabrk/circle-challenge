@@ -1,7 +1,6 @@
-// const { reloadApp } = require('detox-expo-helpers')
 import { device, element, by, expect } from 'detox'
 
-describe('Example', () => {
+describe('Stats test cases', () => {
   beforeAll(async () => {
     await device.launchApp({
       newInstance: true,
@@ -11,12 +10,6 @@ describe('Example', () => {
 
   beforeEach(async () => {
     await device.reloadReactNative()
-    // await reloadApp()
-  })
-
-  it('should be able to play a meditation', async () => {
-    await element(by.id('meditation-item')).atIndex(0).tap()
-    await element(by.id('play-circle')).tap()
   })
 
   it('should be able to manually create an entry and updates the sessions and time changing', async () => {
