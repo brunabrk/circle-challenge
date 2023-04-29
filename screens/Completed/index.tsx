@@ -27,7 +27,7 @@ const Completed = ({ navigation }: Props) => {
   return (
     <Screen style={[styles.screen, { backgroundColor }]}>
       <Icon size={50} name="checkcircle" color={primaryColor} style={styles.checkMark} />
-      <Text style={styles.title} testID="completed-meditation">
+      <Text style={styles.title} testID={'completed-meditation'}>
         {' '}
         Congratulations!
       </Text>
@@ -40,7 +40,7 @@ const Completed = ({ navigation }: Props) => {
         style={styles.button}
         mode="contained"
         color={primaryColor}
-        testID="donate"
+        testID={'donate'}
       >
         Donate
       </Button>
@@ -49,7 +49,7 @@ const Completed = ({ navigation }: Props) => {
         style={[styles.button, styles.skipButton]}
         mode="outlined"
         color={Colors.light.white}
-        testID="skip"
+        testID={'skip'}
       >
         Skip
       </Button>
