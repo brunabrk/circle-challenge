@@ -32,6 +32,7 @@ export default function Home({ navigation }: Props) {
             id: item.id,
           })
         }
+        testID={'meditationItem'}
       >
         <Card.Cover style={[styles.cardImage, styles.popularImage]} source={item.image} />
         <Card.Title

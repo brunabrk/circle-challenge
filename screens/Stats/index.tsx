@@ -31,7 +31,7 @@ export default function StatsScreen() {
             <Card.Content style={styles.cardContent}>
               <Icon name="Trophy" style={styles.icon} size={30} color={primary} />
               <Paragraph>Current Streak</Paragraph>
-              <Title>
+              <Title testID={'currentStreak'}>
                 {streak} day{streak === 1 ? '' : 's'}
               </Title>
             </Card.Content>
@@ -40,7 +40,7 @@ export default function StatsScreen() {
             <Card.Content style={styles.cardContent}>
               <Icon name="calendar" style={styles.icon} size={30} color={primary} />
               <Paragraph>Total Sessions</Paragraph>
-              <Title>
+              <Title testID={'totalSessions'}>
                 {totalSessions} session{totalSessions === 1 ? '' : 's'}
               </Title>
             </Card.Content>
@@ -49,7 +49,7 @@ export default function StatsScreen() {
             <Card.Content style={styles.cardContent}>
               <Icon name="clockcircleo" style={styles.icon} size={30} color={primary} />
               <Paragraph>Time Meditating</Paragraph>
-              <Title>{listenedStat}</Title>
+              <Title testID={'listenedStat'}>{listenedStat}</Title>
             </Card.Content>
           </Card>
         </ScrollView>

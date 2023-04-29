@@ -39,6 +39,7 @@ export default function Calendar({ setManualEntryTimestamp }: Props) {
       style={styles.calendar}
       markedDates={markedDates}
       onDayPress={onManualInput}
+      testID={'calendar'}
       theme={{
         backgroundColor: white,
         calendarBackground: white,

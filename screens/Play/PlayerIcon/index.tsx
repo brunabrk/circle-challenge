@@ -7,6 +7,7 @@ function PlayerIcon(props: {
   name: React.ComponentProps<typeof Icon>['name']
   color?: string
   size?: number
+  testID?: string
   onPress: () => void
 }) {
   const primary = useThemeColor({}, 'primary')
