@@ -1,20 +1,9 @@
-import { device, expect } from 'detox'
+import { expect } from 'detox'
 import { meditationScreen } from './screens/meditation'
 import { statsScreen } from './screens/stats'
 import { completedScreen } from './screens/completed'
 
 describe('Meditation test cases', () => {
-  beforeAll(async () => {
-    await device.launchApp({
-      newInstance: true,
-      permissions: { notifications: 'NO', userTracking: 'NO' },
-    })
-  })
-
-  beforeEach(async () => {
-    await device.reloadReactNative()
-  })
-
   it('should be able to play a meditation and store its stats', async () => {
     await meditationScreen().playMeditation()
     await meditationScreen().finishMeditation()

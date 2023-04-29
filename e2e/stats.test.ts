@@ -1,19 +1,8 @@
-import { device, expect } from 'detox'
+import { expect } from 'detox'
 import { statsScreen } from './screens/stats'
 import { meditationScreen } from './screens/meditation'
 
 describe('Stats test cases', () => {
-  beforeAll(async () => {
-    await device.launchApp({
-      newInstance: true,
-      permissions: { notifications: 'NO', userTracking: 'NO' },
-    })
-  })
-
-  beforeEach(async () => {
-    await device.reloadReactNative()
-  })
-
   it('should be able to manually create an entry and updates the sessions and time changing', async () => {
     await meditationScreen().elements.stats().tap()
     await statsScreen().selectDate()
