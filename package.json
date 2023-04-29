@@ -10,7 +10,7 @@
     "test:e2e": "cypress open",
     "test:e2e:headless": "cypress run",
     "test:e2e:ios": "detox test --configuration ios.sim.debug",
-    "test:e2e:android": "detox test --configuration ios.sim.debug",
+    "test:e2e:android": "detox test --configuration android.emu.debug",
     "prepare": "husky install",
     "prettier": "prettier --write",
     "debug": "open 'rndebugger://set-debugger-loc?host=localhost&port=8081'",
