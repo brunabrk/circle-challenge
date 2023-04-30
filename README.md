@@ -31,13 +31,16 @@ For mac only
 `brew install allure`
 For more information about how to configure Detox please refer: [Detox Oficial Page](https://wix.github.io/Detox/docs/introduction/getting-started)
 
-## How to Run
+## Before Running the Tests
 
+- Please have an/a emulator/simulator installed and added to **_.detoxrc.js_**
 - Make sure the for React-native is running while testing the app:
 
 ```
 yarn react-native start
 ```
+
+## How to Run
 
 **iOS**
 
@@ -56,10 +59,12 @@ yarn test:e2e:android
 
 ---
 
-## 📝 **NOTE:** There is a open issue in Detox that currently only Android SDK < 32 are working
+## 📝 **NOTE:** There is a open issue in Detox that currently only Android SDK < 32 are working! Please make sure to use an emulator that its SDK < 32 (e.g: SDK 31)
 
 ## Test Cases
 
 Please check: [Test Cases](test-cases/doc.md)
 
 ## Improvements
+
+- Detox automatically recorganazies the emulator/simulator
