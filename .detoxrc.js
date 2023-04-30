@@ -41,16 +41,16 @@ module.exports = {
         type: 'iPhone 14',
       },
     },
-    attached: {
-      type: 'android.attached',
-      device: {
-        adbName: '.*',
-      },
-    },
     emulator: {
       type: 'android.emulator',
       device: {
         avdName: 'Pixel_6_API_31',
+      },
+    },
+    emulator_eas: {
+      type: 'android.emulator',
+      device: {
+        avdName: 'pixel_4',
       },
     },
   },
@@ -63,16 +63,12 @@ module.exports = {
       device: 'simulator',
       app: 'ios.release',
     },
-    'android.att.debug': {
-      device: 'attached',
-      app: 'android.debug',
-    },
-    'android.att.release': {
-      device: 'attached',
-      app: 'android.release',
-    },
     'android.emu.debug': {
       device: 'emulator',
+      app: 'android.debug',
+    },
+    'android.eas.debug': {
+      device: 'emulator_eas',
       app: 'android.debug',
     },
     'android.emu.release': {
