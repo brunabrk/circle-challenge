@@ -25,3 +25,6 @@ app-store/
 
 # ide
 .idea
+
+# Detox
+artifacts
