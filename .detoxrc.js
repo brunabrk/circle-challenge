@@ -12,28 +12,26 @@ module.exports = {
   apps: {
     'ios.debug': {
       type: 'ios.app',
-      binaryPath: 'ios/HeyLinda.app',
+      binaryPath: 'ios/build/Build/Products/Debug-iphonesimulator/HeyLinda.app',
       build:
         'xcodebuild -workspace ios/HeyLinda.xcworkspace -scheme HeyLinda -configuration Debug -sdk iphonesimulator -derivedDataPath ios/build',
     },
     'ios.release': {
       type: 'ios.app',
-      binaryPath: 'ios/HeyLinda.app',
+      binaryPath: 'ios/build/Build/Products/Release-iphonesimulator/HeyLinda.app',
       build:
         'xcodebuild -workspace ios/HeyLinda.xcworkspace -scheme HeyLinda -configuration Release -sdk iphonesimulator -derivedDataPath ios/build',
     },
     'android.debug': {
       type: 'android.apk',
-      testBinaryPath: 'android/androidTest/debug/app-debug-androidTest.apk',
-      binaryPath: 'android/debug/app-debug.apk',
-      // build: 'cd android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug',
+      binaryPath: 'android/app/build/outputs/apk/debug/app-debug.apk',
+      build: 'cd android && ./gradlew assembleDebug assembleAndroidTest -DtestBuildType=debug',
       reversePorts: [8081],
     },
     'android.release': {
       type: 'android.apk',
-      testBinaryPath: 'android/androidTest/debug/app-debug-androidTest.apk',
-      binaryPath: 'android/release/app-release.apk',
-      // build: 'cd android && ./gradlew assembleRelease assembleAndroidTest -DtestBuildType=release',
+      binaryPath: 'android/app/build/outputs/apk/release/app-release.apk',
+      build: 'cd android && ./gradlew assembleRelease assembleAndroidTest -DtestBuildType=release',
     },
   },
   devices: {
@@ -52,7 +50,7 @@ module.exports = {
     emulator: {
       type: 'android.emulator',
       device: {
-        avdName: 'Pixel_6_Pro_API_33',
+        avdName: 'Pixel_6_API_31',
       },
     },
   },

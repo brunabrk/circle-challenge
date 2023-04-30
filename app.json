@@ -37,7 +37,15 @@
     "web": {
       "favicon": "./assets/images/favicon.png"
     },
-    "plugins": [["expo-tracking-transparency", "@config-plugins/detox"]],
+    "plugins": [
+      [
+        "expo-tracking-transparency",
+        {
+          "userTrackingPermission": "This identifier will be used to deliver personalized ads to you."
+        }
+      ],
+      "@config-plugins/detox"
+    ],
     "extra": {
       "eas": {
         "projectId": "59fd51b8-5603-4e8c-b21d-842fa0d44605"
