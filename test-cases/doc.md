@@ -1,6 +1,6 @@
 # Test Cases
 
-This document contains test cases or the core HeyLinda app features such as meditation, track progress, and time listened.
+This document contains test cases of the core HeyLinda app features such as meditation, track progress, and time listened.
 
 ### Meditate
 
@@ -27,8 +27,6 @@ This document contains test cases or the core HeyLinda app features such as medi
 #### Performance
 
 Since the application may have users with different internet connection speed it would be good to have a test that simulates a very slow internet connection, e.g. Edge.
-
-## Improvements
 
 ## Questions
 
