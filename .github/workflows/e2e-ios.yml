@@ -12,13 +12,13 @@ jobs:
       - name: Install Node 🛠
         uses: actions/setup-node@v3
         with:
+          node-version: 20.x
           cache: yarn
-          node-version-file: .node-version
 
-      - name: Install Yarn Dependencies 📦
-        run: yarn install
+      - name: Install Dependencies 📦
+        run: yarn install --frozen-lockfile
 
-      - name: Install macOS dependencies 📦
+      - name: Install macOS Dependencies 📦
         run: |
           brew tap wix/brew
           brew install applesimutils
@@ -26,7 +26,7 @@ jobs:
           HOMEBREW_NO_AUTO_UPDATE: 1
           HOMEBREW_NO_INSTALL_CLEANUP: 1
 
-      - name: iOS Expo Prebuild 📦
+      - name: iOS Expo Prebuild 🔩
         run: npx expo prebuild --platform ios
 
       - name: Cache Detox build 📦
@@ -38,7 +38,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-detox-build
 
-      - name: Detox build 📦
+      - name: Detox build 🔮
         run: yarn detox build --configuration ios.sim.debug
 
       - name: Detox test 🚀
