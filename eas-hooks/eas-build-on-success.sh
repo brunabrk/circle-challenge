@@ -40,6 +40,7 @@ if [[ "$EAS_BUILD_PLATFORM" == "android" ]]; then
 else
   # Execute iOS tests
   if [[  "$EAS_BUILD_PROFILE" == "test" ]]; then
+    detox build --configuration ios.sim.debug
     detox test --configuration ios.sim.debug
   fi
 fi
