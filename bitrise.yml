@@ -56,8 +56,19 @@ workflows:
                 #!/usr/bin/env bash
                 npx expo prebuild --platform ios
                 detox build --configuration ios.sim.debug
-                detox test --configuration ios.sim.debug --cleanup
-          title: Build and run detox iOS 🚀
+          title: Build iOS 🔮
+      - script@1:
+          inputs:
+            - content: |-
+                #!/usr/bin/env bash
+                detox test --configuration ios.sim.debug --cleanup --take-screenshots failing --record-videos failing
+          title: Run e2e iOS 🚀
+      - script@1:
+          inputs:
+            - content: |-
+                #!/usr/bin/env bash
+                cp -R artifacts $BITRISE_DEPLOY_DIR
+          title: Create artifacts 📊
 meta:
   bitrise.io:
     stack: osx-xcode-14.2.x-ventura
