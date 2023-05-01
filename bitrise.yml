@@ -50,6 +50,7 @@ workflows:
           title: "Detox and react native CLI \U0001F6E0"
       - avd-manager@1:
           inputs:
+            - abi: x86_64
             - api_level: '31'
       - wait-for-android-emulator@1: {}
       - deploy-to-bitrise-io@2: {}
@@ -60,6 +61,7 @@ workflows:
                 npx expo prebuild --platform ios
                 detox build --configuration ios.sim.debug
           title: "Build iOS  \U0001F34E"
+          is_always_run: true
       - script@1:
           inputs:
             - content: |-
@@ -74,6 +76,7 @@ workflows:
                 #!/usr/bin/env bash
                 detox test --configuration ios.sim.debug --cleanup --take-screenshots failing --record-videos failing
           title: "Run e2e iOS \U0001F680  \U0001F34E"
+          is_always_run: true
       - script@1:
           inputs:
             - content: |-
@@ -87,6 +90,7 @@ workflows:
                 #!/usr/bin/env bash
                 cp -R artifacts $BITRISE_DEPLOY_DIR
           title: "Create artifacts \U0001F4CA"
+          is_always_run: true
 meta:
   bitrise.io:
     stack: osx-xcode-14.2.x-ventura
