@@ -1,0 +1,52 @@
+# .github/workflows/e2e-ios.yml
+name: e2e-ios
+on: push
+
+jobs:
+  e2e-ios:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout 🥁
+        uses: actions/checkout@v3
+
+      - name: Install Node 🛠
+        uses: actions/setup-node@v3
+        with:
+          cache: yarn
+          node-version-file: .node-version
+
+      - name: Install Yarn Dependencies 📦
+        run: yarn install
+
+      - name: Install macOS dependencies 📦
+        run: |
+          brew tap wix/brew
+          brew install applesimutils
+        env:
+          HOMEBREW_NO_AUTO_UPDATE: 1
+          HOMEBREW_NO_INSTALL_CLEANUP: 1
+
+      - name: iOS Expo Prebuild 📦
+        run: npx expo prebuild --platform ios
+
+      - name: Cache Detox build 📦
+        id: cache-detox-build
+        uses: actions/cache@v3
+        with:
+          path: ios/build
+          key: ${{ runner.os }}-detox-build
+          restore-keys: |
+            ${{ runner.os }}-detox-build
+
+      - name: Detox build 📦
+        run: yarn detox build --configuration ios.sim.debug
+
+      - name: Detox test 🚀
+        run: yarn detox test --configuration ios.sim.debug --cleanup --headless --record-logs all --take-screenshots failing --record-videos failing
+
+      - name: Upload artifacts 📊
+        if: failure()
+        uses: actions/upload-artifact@v3
+        with:
+          name: detox-artifacts
+          path: artifacts
