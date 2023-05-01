@@ -3501,7 +3501,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*":
+"@types/react@npm:*, @types/react@npm:~18.2.0":
   version: 18.2.0
   resolution: "@types/react@npm:18.2.0"
   dependencies:
@@ -3520,17 +3520,6 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: 4eaf32b86c43f388c681e34a00921c508dd88a1d1022aebfadc5fe802b7c5bed863de1a17eed31e43ca2d65222952dfe79a022055a0e6e4e1ad89fc5a42ec05e
-  languageName: node
-  linkType: hard
-
-"@types/react@npm:~18.0.27":
-  version: 18.0.38
-  resolution: "@types/react@npm:18.0.38"
-  dependencies:
-    "@types/prop-types": "*"
-    "@types/scheduler": "*"
-    csstype: ^3.0.2
-  checksum: 34481c79f4f7ea2aefbaa45281319dc183200230d932d968463eba1643bd3635073d0a17c5c613150a69e36ca18b811ecffafea6384fa3dff3b5203866339d69
   languageName: node
   linkType: hard
 
@@ -9039,7 +9028,7 @@ __metadata:
     "@reduxjs/toolkit": ^1.6.2
     "@testing-library/react-native": ^7.2.0
     "@types/jest": ^26.0.24
-    "@types/react": ~18.0.27
+    "@types/react": ~18.2.0
     "@types/react-native": ~0.64.12
     "@types/react-native-calendars": ^1.1264.2
     "@types/uuid": ^8.3.1
