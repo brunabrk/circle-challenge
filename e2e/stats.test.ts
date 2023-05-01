@@ -10,7 +10,7 @@ describe('Stats test cases', () => {
     const timeMeditation: string = '33'
     await statsScreen().fillMeditation(timeMeditation)
 
-    await expect(statsScreen().elements.currentStreak()).toHaveText('0 days')
+    await expect(statsScreen().elements.currentStreak()).toHaveText('1 day')
     await expect(statsScreen().elements.totalSessions()).toHaveText('1 session')
     await expect(statsScreen().elements.listenedStat()).toHaveText(`${timeMeditation} minutes`)
   })

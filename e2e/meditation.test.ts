@@ -12,6 +12,7 @@ describe('Meditation test cases', () => {
 
     await meditationScreen().elements.stats().tap()
     await expect(statsScreen().elements.currentStreak()).toHaveText('1 day')
+    await expect(statsScreen().elements.listenedStat()).toHaveText('2 minutes')
     await expect(statsScreen().elements.totalSessions()).toHaveText('1 session')
   })
 })
