@@ -42,7 +42,7 @@ jobs:
         run: yarn detox build --configuration ios.sim.debug
 
       - name: Detox test 🚀
-        run: yarn detox test --configuration ios.sim.debug --cleanup --headless --record-logs all --take-screenshots failing --record-videos failing
+        run: yarn react-native start &; yarn detox test --configuration ios.sim.debug --cleanup --headless --record-logs all --take-screenshots failing --record-videos failing
 
       - name: Upload artifacts 📊
         if: failure()
