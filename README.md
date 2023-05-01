@@ -58,10 +58,6 @@ yarn test:e2e:android
 
 ```
 
----
-
-## 📝 **NOTE:** There is a open issue in Detox that currently only Android SDK < 32 are working! Please make sure to use an emulator that its SDK < 32 (e.g: SDK 31). See issue [Detox Issue](https://github.com/wix/Detox/issues/3762)
-
 ## Test Cases
 
 Please check: [Test Cases](test-cases/doc.md)
@@ -69,3 +65,9 @@ Please check: [Test Cases](test-cases/doc.md)
 ## Improvements
 
 - Detox automatically recorganazies the emulator/simulator
+
+---
+
+## 📝 **NOTE:**
+
+#### There is a open issue in Detox that currently only Android SDK < 32 are working! Please make sure to use an emulator that its SDK < 32 (e.g: SDK 31). See issue [Detox Issue](https://github.com/wix/Detox/issues/3762)

@@ -50,7 +50,7 @@ module.exports = {
     emulator_eas: {
       type: 'android.emulator',
       device: {
-        avdName: 'pixel_4',
+        avdName: 'pixel_5',
       },
     },
   },

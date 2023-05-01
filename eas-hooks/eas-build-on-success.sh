@@ -18,7 +18,7 @@ set -eox pipefail
 # If this script exits, trap it first and clean up the emulator
 trap cleanup EXIT
 
-ANDROID_EMULATOR=pixel_4
+ANDROID_EMULATOR=pixel_5
 
 if [[ "$EAS_BUILD_PLATFORM" == "android" ]]; then
   # Start emulator
