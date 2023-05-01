@@ -4,6 +4,7 @@ import { meditationScreen } from './screens/meditation'
 
 describe('Stats test cases', () => {
   it('should be able to manually create an entry and updates the sessions and time changing', async () => {
+    await waitFor(meditationScreen().elements.stats()).toBeVisible()
     await meditationScreen().elements.stats().tap()
     await statsScreen().selectDate()
 

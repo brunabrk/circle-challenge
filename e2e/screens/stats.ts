@@ -16,6 +16,7 @@ const statsScreen = () => {
   }
 
   const fillMeditation = async (timeMeditation: string) => {
+    await waitFor(elements.input()).toBeVisible()
     await elements.input().typeText(timeMeditation)
     await elements.submitBtn().tap()
   }
