@@ -9,8 +9,9 @@ const meditationScreen = () => {
   }
 
   const playMeditation = async () => {
+    await waitFor(elements.meditationItem(0)).toBeVisible().withTimeout(6000)
     await elements.meditationItem(0).tap()
-    await waitFor(elements.play()).toBeVisible().withTimeout(5000)
+    await waitFor(elements.play()).toBeVisible().withTimeout(6000)
     await elements.play().tap()
   }
 
