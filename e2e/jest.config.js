@@ -8,7 +8,7 @@ module.exports = {
   setupFilesAfterEnv: ['<rootDir>/e2e/globalSetup.ts'],
   globalSetup: 'detox/runners/jest/globalSetup',
   globalTeardown: 'detox/runners/jest/globalTeardown',
-  reporters: [['detox/runners/jest/reporter'], 'summary'],
+  reporters: ['detox/runners/jest/reporter', 'summary'],
   testEnvironment: 'detox/runners/jest/testEnvironment',
   verbose: true,
 }
