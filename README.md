@@ -8,6 +8,10 @@ This challenge uses the Hey Linda project as a base: https://github.com/heylinda
 - Track progress
 - Time listened
 
+## Automation
+
+The tool used was [Detox](https://wix.github.io/Detox/)
+
 ## Prerequisites
 
 **Detox**
@@ -21,14 +25,18 @@ For mac only:
   brew install applesimutils
 ```
 
+For more information about Detox setup please refer: [Detox getting started](https://wix.github.io/Detox/docs/introduction/getting-started)
+
 **App**
 
 - `yarn global add expo-cli`
 - `yarn install`
 
+For more information about App setup please refer: [HeyLinda app](https://github.com/heylinda/heylinda-app)
+
 ## Before Running the Tests
 
-- Please have an/a emulator/simulator installed and added to **_.detoxrc.js_**
+- Please have an/a emulator/simulator installed and added to **_.detoxrc.js_** . Refer to [Detox] (https://wix.github.io/Detox/docs/introduction/project-setup#step-3-device-configs)
 - Create the iOS build using the following command:
 
 ```
@@ -46,16 +54,13 @@ yarn react-native start
 **iOS**
 
 ```
-
 yarn test:e2e:ios
-
 ```
 
 **Android**
 
 ```
 yarn test:e2e:android
-
 ```
 
 ## Test Cases
@@ -66,8 +71,6 @@ Please check: [Test Cases](test-cases/doc.md)
 
 - Detox automatically recorganazies the emulator/simulator
 
----
-
 ## 📝 **NOTE:**
 
-#### There is a open issue in Detox that currently only Android SDK < 32 are working! Please make sure to use an emulator that its SDK < 32 (e.g: SDK 31). See issue [Detox Issue](https://github.com/wix/Detox/issues/3762)
+🚨 There is a open issue in Detox that currently only Android SDK < 32 are working! Please make sure to use an emulator that its SDK < 32 (e.g: SDK 31). See issue [Detox Issue](https://github.com/wix/Detox/issues/3762) 🚨
