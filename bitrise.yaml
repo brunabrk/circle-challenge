@@ -64,8 +64,8 @@ workflows:
             - is_debug: 'yes'
             - content: |-
                 #!/usr/bin/env bash
-                cp -R artifacts $BITRISE_DEPLOY_DIR
-          title: "Create artifacts \U0001F4CA"
+                cp -R ./artifacts $BITRISE_DEPLOY_DIR
+          title: "Create Detox artifacts \U0001F4CA"
           is_always_run: true
       - deploy-to-bitrise-io@2: {}
 meta:
