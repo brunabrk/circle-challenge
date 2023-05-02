@@ -1,12 +1,10 @@
----
 format_version: '11'
 default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
 project_type: react-native
 workflows:
   deploy:
-    description: 'Building and testing HeyLinda App'
+    description: Building and testing HeyLinda App
     steps:
-      - activate-ssh-key@4: {}
       - git-clone@8: {}
       - yarn@0:
           inputs:
@@ -16,12 +14,11 @@ workflows:
             - command: test
       - run-eas-build@0:
           inputs:
-            - platform: '$PLATFORM'
+            - platform: $PLATFORM
       - deploy-to-bitrise-io@2: {}
   primary:
-    description: 'Runs HeyLinda App E2E tests.'
+    description: Runs HeyLinda App E2E tests.
     steps:
-      - activate-ssh-key@4: {}
       - git-clone@8: {}
       - restore-npm-cache@1: {}
       - yarn@0:
