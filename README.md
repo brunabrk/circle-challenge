@@ -20,13 +20,15 @@ The tool used was [Detox](https://wix.github.io/Detox/) to cover both platforms.
 
 **Detox**
 
-- `yarn global add detox-cli`
+```
+yarn global add detox-cli
+```
 
 For mac only:
 
 ```
-  brew tap wix/brew
-  brew install applesimutils
+brew tap wix/brew
+brew install applesimutils
 ```
 
 For more information about Detox setup please refer: [Detox getting started](https://wix.github.io/Detox/docs/introduction/getting-started)
@@ -80,17 +82,20 @@ There are two examples of CI configurations in the project. The bitrise example 
 **Bitrise**
 
 You can see the CI and builds on the following url:
-[pending url](https://bitrise.io)
+[Link](https://app.bitrise.io/app/15b6af4a-b75d-44f5-84d3-d44f946c045b)
 
-Because of bitrise free plan limit of 30 minutes per build, it was impossible to run both ios and android builds with the free plan.
+Because of bitrise free plan limit of 30 minutes per build, it was impossible to run both ios and android builds with the free plan. The build was aborted as the screenshot shows:
+![aborted build](./images/abort_build.png)
 
 Given this constraint, I made the workflow run for iOS only [(iOS only workflow definition)](bitrise.yaml), but I validated that the android parts of the build pass as well, as seen here ![android build](./images/only_android_test.png)
 
 Ultimately, the build should include both platforms, so I created this [Bitrise definition including iOS and Android](bitrise_complete.yml) with the full solution.
 
+In case of failure in the tests, go to Artifacts tab, there will be video and screenshots.
+
 **GitHub Actions**
 
-Please see for [iOS](.github/workflows_example/e2e-ios.yaml) and android [Android](.github/workflows_example/e2e-android.yaml)
+Please see for [iOS](.github/workflows_example/e2e-ios.yml) and android [Android](.github/workflows_example/e2e-android.yaml)
 
 ## Improvements
 
