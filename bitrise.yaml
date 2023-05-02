@@ -50,6 +50,7 @@ workflows:
           inputs:
             - content: |-
                 #!/usr/bin/env bash
+                yarn expo prebuild --platform ios
                 detox build --configuration ios.sim.debug
           title: "Build iOS  \U0001F34E"
           is_always_run: true
