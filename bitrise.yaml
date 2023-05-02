@@ -19,9 +19,7 @@ workflows:
             - platform: '$PLATFORM'
       - deploy-to-bitrise-io@2: {}
   primary:
-    description: 'Runs tests.
-
-      '
+    description: 'Runs HeyLinda App E2E tests.'
     steps:
       - activate-ssh-key@4: {}
       - git-clone@8: {}
@@ -48,17 +46,10 @@ workflows:
                 global add react-native-cli
                 global add detox-cli
           title: "Detox and react native CLI \U0001F6E0"
-      - avd-manager@1:
-          inputs:
-            - abi: x86_64
-            - api_level: '31'
-      - wait-for-android-emulator@1: {}
-      - deploy-to-bitrise-io@2: {}
       - script@1:
           inputs:
             - content: |-
                 #!/usr/bin/env bash
-                npx expo prebuild --platform ios
                 detox build --configuration ios.sim.debug
           title: "Build iOS  \U0001F34E"
           is_always_run: true
@@ -66,31 +57,17 @@ workflows:
           inputs:
             - content: |-
                 #!/usr/bin/env bash
-                npx expo prebuild --platform android
-                detox build --configuration android.emu.debug
-          title: "Build Android  \U0001F916"
-          is_always_run: true
-      - script@1:
-          inputs:
-            - content: |-
-                #!/usr/bin/env bash
-                detox test --configuration ios.sim.debug --cleanup --take-screenshots failing --record-videos failing
+                detox test --configuration ios.sim.debug --record-logs all --take-screenshots failing --record-videos failing
           title: "Run e2e iOS \U0001F680  \U0001F34E"
-          is_always_run: true
       - script@1:
           inputs:
-            - content: |-
-                #!/usr/bin/env bash
-                detox test --configuration android.emu.debug --cleanup --take-screenshots failing --record-videos failing
-          title: "Run e2e Android \U0001F916 \U0001F680"
-          is_always_run: true
-      - script@1:
-          inputs:
+            - is_debug: 'yes'
             - content: |-
                 #!/usr/bin/env bash
                 cp -R artifacts $BITRISE_DEPLOY_DIR
           title: "Create artifacts \U0001F4CA"
           is_always_run: true
+      - deploy-to-bitrise-io@2: {}
 meta:
   bitrise.io:
     stack: osx-xcode-14.2.x-ventura

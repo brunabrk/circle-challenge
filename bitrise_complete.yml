@@ -1,0 +1,99 @@
+---
+format_version: '11'
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: react-native
+workflows:
+  deploy:
+    description: 'Building and testing HeyLinda App'
+    steps:
+      - activate-ssh-key@4: {}
+      - git-clone@8: {}
+      - yarn@0:
+          inputs:
+            - command: install
+      - yarn@0:
+          inputs:
+            - command: test
+      - run-eas-build@0:
+          inputs:
+            - platform: '$PLATFORM'
+      - deploy-to-bitrise-io@2: {}
+  primary:
+    description: 'Runs HeyLinda App E2E tests.'
+    steps:
+      - activate-ssh-key@4: {}
+      - git-clone@8: {}
+      - restore-npm-cache@1: {}
+      - yarn@0:
+          inputs:
+            - command: install
+      - save-npm-cache@1: {}
+      - script@1:
+          inputs:
+            - content: |-
+                #!/usr/bin/env bash
+                set -e
+                set -o pipefail
+                set -x
+                echo "Install iOS dependencies"
+
+                brew tap wix/brew
+                brew install applesimutils
+          title: "iOS Detox Dependencies \U0001F6E0"
+      - yarn@0:
+          inputs:
+            - command: |-
+                global add react-native-cli
+                global add detox-cli
+          title: "Detox and react native CLI \U0001F6E0"
+      - script@1:
+          inputs:
+            - content: |-
+                #!/usr/bin/env bash
+                detox build --configuration ios.sim.debug
+          title: "Build iOS  \U0001F34E"
+          is_always_run: true
+      - script@1:
+          inputs:
+            - content: |-
+                #!/usr/bin/env bash
+                detox test --configuration ios.sim.debug --record-logs all --take-screenshots failing --record-videos failing
+          title: "Run e2e iOS \U0001F680  \U0001F34E"
+      - script@1:
+          inputs:
+            - content: |-
+                #!/usr/bin/env bash
+                detox build --configuration android.emu.debug
+          title: 'Build Android 🤖'
+          is_always_run: true
+      - avd-manager@1:
+          inputs:
+            - abi: x86_64
+            - api_level: '31'
+      - wait-for-android-emulator@1: {}
+      - script@1:
+          inputs:
+            - content: |-
+                #!/usr/bin/env bash
+                yarn react-native start &
+                detox test --configuration android.bitrise.debug --record-logs all --take-screenshots failing --record-videos failing
+          title: "Run e2e Android \U0001F916 🤖"
+      - script@1:
+          inputs:
+            - content: |-
+                #!/usr/bin/env bash
+                cp -R artifacts $BITRISE_DEPLOY_DIR
+          title: "Create artifacts \U0001F4CA"
+          is_always_run: true
+      - deploy-to-bitrise-io@2: {}
+meta:
+  bitrise.io:
+    stack: osx-xcode-14.2.x-ventura
+app:
+  envs:
+    - opts:
+        is_expand: false
+      PLATFORM: all
+trigger_map:
+  - push_branch: main
+    workflow: primary
