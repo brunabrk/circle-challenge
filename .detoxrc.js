@@ -53,6 +53,12 @@ module.exports = {
         avdName: 'pixel_5',
       },
     },
+    emulator_bitrise: {
+      type: 'android.emulator',
+      device: {
+        avdName: 'emulator',
+      },
+    },
   },
   configurations: {
     'ios.sim.debug': {
@@ -74,6 +80,10 @@ module.exports = {
     'android.emu.release': {
       device: 'emulator',
       app: 'android.release',
+    },
+    'android.bitrise.debug': {
+      device: 'emulator_bitrise',
+      app: 'android.debug',
     },
   },
 }
